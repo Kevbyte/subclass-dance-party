@@ -1,6 +1,6 @@
 var makeBlinkyDancer = function(top, left, timeBetweenSteps){
   
-  makeDancer.call(this, top, left, timeBetweenSteps);
+  makeDancer.apply(this, arguments);
 
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
@@ -13,7 +13,7 @@ makeBlinkyDancer.prototype.constructor = makeBlinkyDancer;
 
 makeBlinkyDancer.prototype.step = function(){
   // this.step.call(this, )
-  makeDancer.prototype.step.apply(this, arguments);
+  makeDancer.prototype.step.call(this);
   this.$node.toggle();
 };
 
